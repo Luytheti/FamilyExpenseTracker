@@ -20,12 +20,10 @@ The **Family Expense Tracker** is an application designed to track and manage fa
 
 ## Data Management
 - Initial data of **25 individuals, 10 families, and 40 expenses** is loaded from a file.
-- Input data is **unsorted** and sorted on reading.
 - Assumptions:
   - Maximum **1000 users** and **1000 expenses**.
   - Maximum **100 families**.
   - Expenses and incomes are stored as **floating-point numbers (2 decimal places).**
-  - Each month has **10 days** for simplicity.
 
 ## Installation
 1. Clone this repository:
