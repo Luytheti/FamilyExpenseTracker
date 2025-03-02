@@ -32,12 +32,12 @@ The **Family Expense Tracker** is an application designed to track and manage fa
    ```
 2. Compile and run the program:
    ```sh
-   g++ expense_tracker.cpp -o expense_tracker
+   g++ expense_tracker.c -o expense_tracker
    ./expense_tracker
    ```
 
 ## File Structure
-- `expense_tracker.cpp` - Main implementation of the expense tracker.
+- `expense_tracker.c` - Main implementation of the expense tracker.
 - `data.txt` - File containing initial dataset.
 - `README.md` - Project documentation.
 
