@@ -15,8 +15,9 @@ The **Family Expense Tracker** is an application designed to track and manage fa
 - **Get Individual Expense:** Shows a user's total monthly expenses and category-wise breakdown in descending order.
 
 ## Data Structures Used
+- **B-Trees:** Kept three trees to store users, expenses and families.
 - **Singly/Doubly Linked Lists:** Used to store individual, family, and expense details efficiently.
-- **Stack & Queue ADTs:** Used where necessary to optimize operations.
+
 
 ## Data Management
 - Initial data of **25 individuals, 10 families, and 40 expenses** is loaded from a file.
