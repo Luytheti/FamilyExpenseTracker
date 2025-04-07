@@ -42,17 +42,6 @@ The application supports a variety of functionalities, including user and expens
 #### Page 2
 ![Assignment Page 2](DSPD2-Assignment-2-S25-2-3_page-0002.jpg)
 
-> Visual guidelines to help you understand the flow and output:
-
-### 📍 Add User Flow
-![Add User](assets/add_user.png)
-
-### 📍 Expense Summary View
-![Expense Summary](assets/expense_summary.png)
-
-### 📍 Highest Expense Day
-![Highest Expense Day](assets/highest_day.png)
-
 ---
 
 ## 🚀 Installation & Run
