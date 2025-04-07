@@ -1,58 +1,56 @@
-# Family Expense Tracker
+# 🧾 Family Expense Tracker
 
-## Introduction
-The **Family Expense Tracker** is an application designed to track and manage family expenses efficiently. It allows users to add monthly expenses categorized into different sections such as rent, utilities, groceries, etc. The system maintains a detailed record of individual and family expenses using **linked lists** to ensure efficient data management.
+## 📌 Overview
 
-## Features
-- **Add Users:** Users are added and stored in a sorted manner based on their User ID.
-- **Add Expenses:** Expenses are stored in a sorted manner by User ID and then by Expense ID.
-- **Create Families:** Users belong to families (1-4 members), and total monthly expenses and incomes are automatically calculated.
-- **Update/Delete Individual or Family Details:** Updates to an individual reflect in the family details. If a single-member family is deleted, the family is also removed.
-- **Update/Delete Expenses:** Modifications to expenses update all dependent records.
-- **Get Total Expense:** Displays total family expenses and checks if it surpasses the family income.
-- **Get Categorical Expense:** Shows total family expense for a specific category, along with individual contributions.
-- **Get Highest Expense Day:** Identifies the date with the highest family expenditure.
-- **Get Individual Expense:** Shows a user's total monthly expenses and category-wise breakdown in descending order.
+The **Family Expense Tracker** is a C-based console application designed to efficiently track and manage expenses across families and individual users. This project offers two distinct implementations — one using **Linked Lists** and another using **B-Trees** — to provide insights into both data structures and how they impact data handling, access, and storage efficiency.
 
-## Data Structures Used
-- **B-Trees:** Kept three trees to store users, expenses and families.
-- **Singly/Doubly Linked Lists:** Used to store individual, family, and expense details efficiently.
-
-
-## Data Management
-- Initial data of **25 individuals, 10 families, and 40 expenses** is loaded from a file.
-- Assumptions:
-  - Maximum **1000 users** and **1000 expenses**.
-  - Maximum **100 families**.
-  - Expenses and incomes are stored as **floating-point numbers (2 decimal places).**
-
-## Installation
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/your-username/family-expense-tracker.git
-   ```
-2. Compile and run the program:
-   ```sh
-   g++ expense_tracker.c -o expense_tracker
-   ./expense_tracker
-   ```
-
-## File Structure
-- `expense_tracker.c` - Main implementation of the expense tracker.
-- `data.txt` - File containing initial dataset.
-- `README.md` - Project documentation.
-
-## Future Enhancements
-- Implement a **graphical user interface (GUI)**.
-- Integrate a **database** for better data management.
-- Add **real-time tracking** with WebSockets.
-- Provide **export options** (CSV, JSON) for expense reports.
-
-## Contributors
-- **[Rajas Daryapurkar]** - [Luytheti](https://github.com/Luytheti)
-
-## License
-This project is licensed under the **MIT License**.
+The application supports a variety of functionalities, including user and expense management, family grouping, and real-time expense analytics. It utilizes file handling to persist data across sessions.
 
 ---
+
+## 🧠 Key Concepts Explored
+
+- **Data Structures Used:**
+  - 🧱 **Linked Lists** – Used to store user, family, and expense data in a dynamic memory-efficient format.
+  - 🌳 **B-Trees** – Implemented for sorted storage and faster access to user, family, and expense records.
+  
+- **File Handling:**
+  - Initial data (25 users, 10 families, 40 expenses) is loaded from a file (`data.txt`) on program start.
+  - Updated data is saved back to the file to maintain consistency between sessions.
+
+---
+
+## ✨ Features
+
+- 👤 **Add Users:** Users are inserted in sorted order based on User ID.
+- 🧾 **Add Expenses:** Supports adding expenses sorted by User ID and Expense ID.
+- 🏠 **Create Families:** Group 1–4 users into a family. Automatically tracks total income and expenses.
+- 🔄 **Update/Delete Users & Families:** Changes to individual users reflect in their family. Families with one user get deleted when that user is removed.
+- 🗃️ **Update/Delete Expenses:** Automatically updates all dependent records.
+- 💰 **Get Total Family Expense:** Displays total monthly family expense and compares it with family income.
+- 🗂️ **Get Categorical Expense:** View total expenses per category with user-wise breakdown.
+- 📅 **Highest Expense Day:** Identifies the date with the maximum spending.
+- 📊 **Individual Expense Report:** Detailed breakdown of personal expenses, sorted by category.
+
+---
+
+> Visual guidelines to help you understand the flow and output:
+
+### 📍 Add User Flow
+![Add User](assets/add_user.png)
+
+### 📍 Expense Summary View
+![Expense Summary](assets/expense_summary.png)
+
+### 📍 Highest Expense Day
+![Highest Expense Day](assets/highest_day.png)
+
+---
+
+## 🚀 Installation & Run
+
+### 🔧 Clone the Repository
+```sh
+git clone https://github.com/your-username/family-expense-tracker.git
+cd family-expense-tracker
 
