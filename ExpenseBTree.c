@@ -1950,8 +1950,6 @@ void Update_Delete_Expense(TreenodeUser* root, TreenodeExpense* expenseRoot, int
     return;
 }
     
-
-
 int main() {
     TreenodeUser* root = NULL;
     TreenodeFamily* familyRoot = NULL;
@@ -1978,7 +1976,7 @@ int main() {
         printf("Enter your choice: ");
         if (scanf("%d", &choice) != 1) {
             printf("Invalid input. Please enter a number.\n");
-            while (getchar() != '\n'); 
+            while (getchar() != '\n'); // Clear input buffer
             continue;
         }
 
@@ -1987,127 +1985,132 @@ int main() {
                 AddUser(&root, &familyRoot, expenseRoot);
                 break;
             }
-                case 2: {
-                    clear();
-                    addExpense(root, &expenseRoot);
-                    break;
-                }
-                case 3: {
-                    int user_id, family_id;
-                    clear();
-                    mvprintw(2, 2, "Enter User ID: ");
-                    echo(); scanw("%d", &user_id); noecho();
-                    mvprintw(3, 2, "Enter Family ID: ");
-                    echo(); scanw("%d", &family_id); noecho();
-                    JoinFamily(familyRoot, root, user_id, family_id, expenseRoot);
-                    break;
-                }
-                case 4: {
-                    int user_id;
-                    clear();
-                    mvprintw(2, 2, "Enter User ID: ");
-                    echo(); scanw("%d", &user_id); noecho();
-                    Update_Delete_FamilyDetails(root, expenseRoot, familyRoot, user_id);
-                    break;
-                }
-                case 5: {
-                    int user_id;
-                    clear();
-                    mvprintw(2, 2, "Enter User ID: ");
-                    echo(); scanw("%d", &user_id); noecho();
-                    Update_Delete_Expense(root, expenseRoot, user_id);
-                    break;
-                }
-                case 6: {
-                    int family_id;
-                    clear();
-                    mvprintw(2, 2, "Enter Family ID: ");
-                    echo(); scanw("%d", &family_id); noecho();
-                    GetMonthlyExpense(familyRoot, root, expenseRoot, family_id);
-                    break;
-                }
-                case 7: {
-                    int family_id, category;
-                    clear();
-                    mvprintw(2, 2, "Enter Family ID: ");
-                    echo(); scanw("%d", &family_id); noecho();
-                    mvprintw(3, 2, "Enter Category (0-Rent, 1-Grocery, 2-Utility, 3-Leisure, 4-Stationery, 5-Others): ");
-                    echo(); scanw("%d", &category); noecho();
-                    if (category >= 0 && category <= 5) {
-                        GetCategoricalExpense(root, expenseRoot, familyRoot, family_id, category);
-                    } else {
-                        mvprintw(5, 2, "Invalid category.\n");
-                    }
-                    break;
-                }
-                case 8: {
-                    int family_id;
-                    clear();
-                    mvprintw(2, 2, "Enter Family ID: ");
-                    echo(); scanw("%d", &family_id); noecho();
-                    GetHighestExpenseDay(familyRoot, root, expenseRoot, family_id);
-                    break;
-                }
-                case 9: {
-                    int user_id;
-                    clear();
-                    mvprintw(2, 2, "Enter User ID: ");
-                    echo(); scanw("%d", &user_id); noecho();
-                    GetIndividualExpense(root, expenseRoot, user_id);
-                    break;
-                }
-                case 10: {
-                    int sd, sm, ed, em;
-                    clear();
-                    mvprintw(2, 2, "Enter start date (dd mm): ");
-                    echo(); scanw("%d %d", &sd, &sm); noecho();
-                    mvprintw(3, 2, "Enter end date (dd mm): ");
-                    echo(); scanw("%d %d", &ed, &em); noecho();
-                    GetExpenseInPeriod(root, expenseRoot, sd, sm, ed, em);
-                    break;
-                }
-                case 11: {
-                    int user_id, exp1, exp2;
-                    clear();
-                    mvprintw(2, 2, "Enter User ID: ");
-                    echo(); scanw("%d", &user_id); noecho();
-                    UserNode* userNode = GetUserById(root, user_id);
-                    if (userNode == NULL) {
-                        mvprintw(3, 2, "User not found.");
-                        break;
-                    }
-                    mvprintw(4, 2, "Enter expense range (exp1 exp2): ");
-                    echo(); scanw("%d %d", &exp1, &exp2); noecho();
-                    GetExpenseInRange(root, exp1, exp2, user_id, expenseRoot);
-                    break;
-                }
-                case 12: {
-                    clear();
-                    if (root == NULL) {
-                        mvprintw(2, 2, "No users found.\n");
-                    } else {
-                        PrintTree(root);  // You might need to update this to use ncurses too
-                    }
-                    break;
-                }
-                case 13: {
-                    clear();
-                    SaveAllData(root, familyRoot, expenseRoot);
-                    mvprintw(2, 2, "Data saved. Exiting...");
-                    refresh();
-                    getch();
-                    endwin();
-                    exit(0);
-                }
-                default: {
-                    clear();
-                    mvprintw(2, 2, "Invalid choice. Please try again.\n");
-                    break;
-                }
-                
+            case 2: {
+                addExpense(root, &expenseRoot);
+                break;
             }
-            w
-            mvprintw(20, 2, "\nPress any key to continue...");
-            getch();
+            case 3: {
+                int user_id, family_id;
+                printf("Enter User ID: ");
+                scanf("%d", &user_id);
+                printf("Enter Family ID: ");
+                scanf("%d", &family_id);
+                JoinFamily(familyRoot, root, user_id, family_id, expenseRoot);
+                break;
+            }
+            case 4: {
+                int user_id;
+                printf("Enter User ID: ");
+                scanf("%d", &user_id);
+                Update_Delete_FamilyDetails(root, expenseRoot, familyRoot, user_id);
+                break;
+            }
+            case 5: {
+                int user_id;
+                printf("Enter User ID: ");
+                scanf("%d", &user_id);
+                Update_Delete_Expense(root, expenseRoot, user_id);
+                break;
+            }
+            case 6: {
+                int family_id;
+                printf("Enter Family ID: ");
+                scanf("%d", &family_id);
+                GetMonthlyExpense(familyRoot, root, expenseRoot, family_id);
+                break;
+            }
+            case 7: {
+                int family_id, category;
+                printf("Enter Family ID: ");
+                scanf("%d", &family_id);
+                printf("Enter Category (0-Rent, 1-Grocery, 2-Utility, 3-Leisure, 4-Stationery, 5-Others): ");
+                scanf("%d", &category);
+                if (category < 0 || category > 5) {
+                    printf("Error: Invalid category. Please enter a number between 0 and 5.\n");
+                    break;
+                }
+                GetCategoricalExpense(root, expenseRoot, familyRoot, family_id, category);
+                break;
+            }
+            case 8: {
+                int family_id;
+                printf("Enter Family ID: ");
+                scanf("%d", &family_id);
+                GetHighestExpenseDay(familyRoot, root, expenseRoot, family_id);
+                break;
+            }
+            case 9: {
+                int user_id;
+                printf("Enter User ID: ");
+                scanf("%d", &user_id);
+                GetIndividualExpense(root, expenseRoot, user_id);
+                break;
+            }
+            case 10:{
+                printf("Enter start date (dd mm): ");
+                int start_day, start_month;
+                scanf("%d %d", &start_day, &start_month);
+                if(start_day < 1 || start_day > 31 || start_month < 1 || start_month > 12) {
+                    printf("Error: Invalid date. Please enter a valid date.\n");
+                }
+                printf("Enter end date (dd mm): ");
+                int end_day, end_month;
+                scanf("%d %d", &end_day, &end_month); // assuming he has given correct date
+                if(end_day < 1 || end_day > 31 || end_month < 1 || end_month > 12) {
+                    printf("Error: Invalid date. Please enter a valid date.\n");
+                }
+                if(start_month > end_month || (start_month == end_month && start_day > end_day)) {
+                    printf("Error: Start date should be earlier than end date.\n");
+                }
+                GetExpenseInPeriod(root, expenseRoot, start_day, start_month, end_day, end_month);
+                break;
+            }
+            case 11:{
+                int user_id;
+                printf("Enter User ID: ");
+                scanf("%d", &user_id);
+                UserNode* userNode = GetUserById(root, user_id);
+                if (userNode == NULL) {
+                    break;
+                }
+                printf("User Name: %s\n", userNode->user_name);
+                printf("Expense IDs: ");
+                for (int i = 0; i < userNode->expense_count; i++) {
+                    printf("%d ", userNode->exp[i]);
+                }
+                printf("\n");
+                int exp1, exp2;
+                printf("Enter expense range (exp1 exp2): ");
+                scanf("%d %d", &exp1, &exp2);
+                
+                if(exp1 > exp2) {
+                    printf("Error: Invalid range. Please enter a valid range.\n");
+                }
+                GetExpenseInRange(root, exp1, exp2, user_id, expenseRoot);
+                break;
+            }
+            case 12: {
+                // Print Users
+                if (root == NULL) {
+                    printf("No users found.\n");
+                } else {
+                    PrintTree(root);
+                }
+                break;
+            }
+            case 13: {
+                // Exit and Save Data
+                SaveAllData(root, familyRoot, expenseRoot);
+                printf("Data saved. Exiting...\n");
+                break;
+            }
+            default: {
+                printf("Invalid choice. Please try again.\n");
+                break;
+            }
         }
-    }
+    } while (choice != 13);
+
+    return 0;
+}
+
