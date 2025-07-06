@@ -28,6 +28,7 @@ typedef struct {
 typedef struct FamilyNode_tag {
     int family_id;
     char family_name[NAME];
+    float budget;
     float total_income;
     float total_expense;
     struct IndividualNode_tag* individuals[FAMILY_MEMBERS];
@@ -206,6 +207,7 @@ void initialize_family(family_node *family, int family_id, char *family_name) {
     family->total_income = 0;
     family->total_expense = 0;
     family->member_count = 0;
+    family->budget = 0;
     for(int i = 0; i < FAMILY_MEMBERS; i++) {
         family->individuals[i] = NULL;
     }
@@ -506,6 +508,16 @@ void GetMonthlyExpense(family_node* dummyFamily,expense_node* dummyExpense, int 
     } else {
         printf("Expense is within family's monthly income\n");
     }
+    if (family->budget > 0) {
+        printf("Family Budget for this month: %.2f\n", family->budget);
+        if (monthly_expense > family->budget) {
+            printf("Warning: Monthly expense exceeds the budget by %.2f\n", monthly_expense - family->budget);
+        } else {
+            printf("Monthly expense is within the budget.\n");
+        }
+    } else {
+        printf("No budget set for this month.\n");
+    }
 }
 
 void GetCategoricalExpense(expense_node* dummyExpense, int family_id) {
@@ -752,8 +764,9 @@ int main() {
         printf("7. Get Categorical Expense\n");
         printf("8. Get Highest Expense Day\n");
         printf("9. Get Individual Expense\n");
-        printf("10. Print Family and Print users\n"); 
-        printf("11. Exit\n");
+        printf("10. Set Budget");
+        printf("11. Print Family and Print users\n"); 
+        printf("12. Exit\n");
 
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -874,12 +887,30 @@ int main() {
                 break;
             }
             case 10:{
+                float budget = 0;
+                int family_id;
+                printf("Enter family id:");
+                scanf("%d", &family_id);
+                family_node *family = dummyFamily->next;
+                while(family != NULL && family->family_id != family_id) {
+                    family = family->next;
+                }
+                if(family == NULL) {
+                    printf("Family not found!\n");
+                } else {
+                    printf("Enter budget for family %s: ", family->family_name);
+                    scanf("%f", &budget);
+                    family->budget = budget;
+                    printf("Budget set successfully for family %s\n", family->family_name);
+                }
+            }
+            case 11:{
                 PrintUsers(dummyIndividual);
                 printf("\n");
                 printFamily(dummyFamily);
                 break;
             }
-            case 11: {
+            case 12: {
                 printf("Exiting...\n");
                 saveDataToFile(dummyIndividual, dummyFamily, dummyExpense);
                 break;
